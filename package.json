@@ -1,0 +1,29 @@
+{
+  "name": "hexo-test-utils",
+  "version": "0.0.1",
+  "description": "A set of utils for easy testing Hexo plugins",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ertrzyiks/hexo-test-utils.git"
+  },
+  "peerDependencies": {
+    "hexo": "3.x"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ertrzyiks/hexo-test-utils/issues"
+  },
+  "homepage": "https://github.com/ertrzyiks/hexo-test-utils#readme",
+  "dependencies": {
+    "stream-to-promise": "^2.2.0"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-es2015": "^6.24.1"
+  }
+}
