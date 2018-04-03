@@ -3,6 +3,10 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+## [0.0.3] - 2018-04-03
+### Fixed
+- index.js compilation
+
 ## [0.0.2] - 2018-04-03
 ### Added
 - basic specs
