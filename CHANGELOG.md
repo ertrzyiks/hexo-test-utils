@@ -9,6 +9,9 @@ All notable changes to this project will be documented in this file.
 ### Changed
 - The init function returned by `createSandbox` returns a Promise now
 
+### Fixed
+- `hasRoute` returns correct value for removed routes
+
 ## [0.0.1] - 2018-03-14
 ### Added
 - Initial version
