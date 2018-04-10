@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "ava",
-    "build": "./scripts/build.sh"
+    "build": "./scripts/build.sh",
+    "generate:docs": "jsdoc -r -c jsdoc.json"
   },
   "ava": {
     "files": [
@@ -40,6 +41,8 @@
     "@babel/preset-env": "^7.0.0-beta.44",
     "@babel/register": "^7.0.0-beta.44",
     "ava": "^0.25.0",
-    "hexo": "^3.6.0"
+    "docdash": "^0.4.0",
+    "hexo": "^3.6.0",
+    "jsdoc": "^3.5.5"
   }
 }
