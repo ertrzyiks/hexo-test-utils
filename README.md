@@ -9,6 +9,12 @@ Offered features:
  - high level functions for Hexo internals
  - ECMAScript5 compatibility
 
+## Installation
+
+```
+npm install hexo-test-utils
+```
+
 ## Sandbox
 
 The main feature is a Sandbox. It allows to create an isolated environment of Hexo blog. Combined
