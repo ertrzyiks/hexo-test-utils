@@ -66,3 +66,7 @@ You can skip `fixture_folder` if you don't need any files to exists, for example
 The factory function will have no parameters then and the Sandbox will be an empty Hexo project - no posts, no theme, no assets.
 
 You can still use Hexo API to provide fixtures programmatically.
+
+## Documentation
+
+Read API documentation [here](https://ertrzyiks.github.io/hexo-test-utils/)
