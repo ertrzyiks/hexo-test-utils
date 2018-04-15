@@ -1,7 +1,7 @@
 import test from 'ava'
 import Hexo from 'hexo'
-import {createSandbox} from '../../lib/'
-import {mockConfig} from '../../lib/core/'
+import {createSandbox} from '../../lib'
+import {mockConfig} from '../../lib/core'
 
 const sandbox = createSandbox(Hexo)
 

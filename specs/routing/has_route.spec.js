@@ -1,7 +1,7 @@
 import test from 'ava'
 import Hexo from 'hexo'
-import {createSandbox} from '../../lib/'
-import {hasRoute} from '../../lib/routing/'
+import {createSandbox} from '../../lib'
+import {hasRoute} from '../../lib/routing'
 
 const sandbox = createSandbox(Hexo)
 

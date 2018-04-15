@@ -11,7 +11,7 @@ Offered features:
 
 ## Sandbox
 
-The main feature of `hexo-test-utils` is a Sandbox. It allows to create an isolated environment of Hexo blog. Combined
+The main feature is a Sandbox. It allows to create an isolated environment of Hexo blog. Combined
 with a fixture, it's easy to prepare all need files, process the blog and assert the output.
 
 To create a Sandbox instance, first you need to create a factory with `createSandbox`:
@@ -29,8 +29,10 @@ const sandbox = createSandbox(Hexo, {
 })
 ```
 
-Now, the `sandbox` is a function which returns a new context - as instance of Hexo blog which is ready for processing.
-It accepts one parameter, name of the fixture folder, where live all fixture files.
+Now, the `sandbox` is a function which returns a new context - an instance of Hexo blog which is ready for processing.
+
+### Using fixture folder
+If `fixture_folder` is set, the factory function accepts one parameter, name of the fixture folder where live all fixture files.
 
 To prepare a fixture with one post, create folder `./fixtures/one-post/source/_posts/` and put the markdown file there.
 
@@ -51,3 +53,10 @@ process(context).then(() => {
 Now you can start check the behavior of your plugin.
 
 > Note: no files were actually saved on the hard drive, all the process happened in memory.
+
+### Empty Sandbox
+
+You can skip `fixture_folder` if you don't need any files to exists, for example when testing a view helper in isolation.
+The factory function will have no parameters then and the Sandbox will be an empty Hexo project - no posts, no theme, no assets.
+
+You can still use Hexo API to provide fixtures programmatically.
