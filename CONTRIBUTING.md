@@ -36,3 +36,11 @@ To update documentation, use
 ```
 npm run docs:update
 ```
+
+### Making a release
+
+ - update CHANGELOG.md
+ - bump package.json version
+ - build the release version `npm run build`
+ - release new version with git
+ - go to `dist` folder and run `npm publish`
