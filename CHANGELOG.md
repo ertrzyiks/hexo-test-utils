@@ -2,7 +2,11 @@
 All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
-### Added documentation
+### Added
+ - documentation
+
+### Changed
+ - reorganized modules, all functions are exported from the main module
 
 ## [0.0.3] - 2018-04-03
 ### Fixed
