@@ -22,7 +22,7 @@
 <label for="nav-trigger" class="overlay"></label>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-hexo-test-utils.html">hexo-test-utils</a><ul class='methods'><li data-type='method'><a href="module-hexo-test-utils.html#.createSandbox">createSandbox</a></li></ul></li><li><a href="module-hexo-test-utils_core.html">hexo-test-utils/core</a><ul class='methods'><li data-type='method'><a href="module-hexo-test-utils_core.html#.mockConfig">mockConfig</a></li><li data-type='method'><a href="module-hexo-test-utils_core.html#.process">process</a></li></ul></li><li><a href="module-hexo-test-utils_helpers.html">hexo-test-utils/helpers</a><ul class='methods'><li data-type='method'><a href="module-hexo-test-utils_helpers.html#.getHelper">getHelper</a></li><li data-type='method'><a href="module-hexo-test-utils_helpers.html#.hasHelper">hasHelper</a></li></ul></li><li><a href="module-hexo-test-utils_routing.html">hexo-test-utils/routing</a><ul class='methods'><li data-type='method'><a href="module-hexo-test-utils_routing.html#.contentFor">contentFor</a></li><li data-type='method'><a href="module-hexo-test-utils_routing.html#.hasRoute">hasRoute</a></li></ul></li></ul><h3><a href="global.html">Global</a></h3>
+    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-core.html">core</a><ul class='methods'><li data-type='method'><a href="module-core.html#.createSandbox">createSandbox</a></li><li data-type='method'><a href="module-core.html#.mockConfig">mockConfig</a></li><li data-type='method'><a href="module-core.html#.process">process</a></li></ul></li><li><a href="module-helpers.html">helpers</a><ul class='methods'><li data-type='method'><a href="module-helpers.html#.getHelper">getHelper</a></li><li data-type='method'><a href="module-helpers.html#.hasHelper">hasHelper</a></li></ul></li><li><a href="module-routing.html">routing</a><ul class='methods'><li data-type='method'><a href="module-routing.html#.contentFor">contentFor</a></li><li data-type='method'><a href="module-routing.html#.hasRoute">hasRoute</a></li></ul></li></ul><h3><a href="global.html">Global</a></h3>
 </nav>
 
 <div id="main">
@@ -38,16 +38,108 @@
     <section>
         <article>
             <pre class="prettyprint source linenums"><code>/**
- * @module hexo-test-utils/core
+ * A Hexo context object
+ * @typedef {Object} HexoContext
  */
+
+/**
+ * @callback sandboxFactoryFn
+ * @param {string} name
+ * @return {HexoContext}
+ */
+
+/**
+ * @module core
+ */
+
+import path from 'path'
+import Promise from 'bluebird'
+
+/**
+ * ```js
+ * // CommonJS
+ * const {createSandbox} = require('hexo-test-utils')
+ *
+ * // ES2015
+ * import {createSandbox} from 'hexo-test-utils'
+ * ```
+ *
+ * This is the main function of `hexo-test-utils` used to build a factory of sandboxes.
+ *
+ * By default it uses an empty fixture folder, which means no source files, no theme, no config, etc.
+ * To prepare data for your test you have multiple options:
+ *  - use {@link HexoContext} methods directly
+ *  - use helper methods from this package, like {@link module:core.mockConfig|mockConfig}
+ *  - provide a folder with fixture files
+ *
+ * @param {constructor} Hexo - Hexo constructor to be used
+ * @param {Object} options - Sandbox options
+ * @param {string} options.fixture_folder - a root path to the folder with fixtures
+ * @param {string[]} options.plugins - list of plugins paths to be loaded in your Sandbox
+ * @return {sandboxFactoryFn} a Sandbox factory function
+ *
+ * @example &lt;caption>Basic example&lt;/caption>
+ * const {createSandbox} = require('hexo-test-utils')
+ * const Hexo = require('hexo')
+ * const sandbox = createSandbox(Hexo)
+ *
+ * const ctx = sandbox()
+ *
+ * @example &lt;caption>Example with custom fixture&lt;/caption>
+ * const {createSandbox} = require('hexo-test-utils')
+ * const Hexo = require('hexo')
+ * const path = require('path')
+ *
+ * const sandbox = createSandbox(Hexo, {
+ *   fixture_folder: path.join(__dirname, '..', 'fixtures')
+ * })
+ *
+ * // Create a context with a fixture folder set to '../fixtures/test1'
+ * const ctx = sandbox('test1')
+ *
+ * @example &lt;caption>Example with custom plugins&lt;/caption>
+ * const {createSandbox} = require('hexo-test-utils')
+ * const Hexo = require('hexo')
+ * const path = require('path')
+ *
+ * const sandbox = createSandbox(Hexo, {
+ *   plugins: [
+ *     path.join(__dirname, '..', 'src')
+ *   ]
+ * })
+ *
+ * const ctx = sandbox()
+ */
+export function createSandbox(Hexo, options) {
+  options = {
+    plugins: [],
+    ...options
+  }
+
+  return function init (name) {
+    const baseFolder = name
+      ? path.join(options.fixture_folder, name)
+      : path.join(__dirname, 'fixtures', 'default')
+
+    const ctx = new Hexo(baseFolder, {silent: true})
+
+    return ctx.init()
+      .then(() => {
+        return Promise.each(options.plugins, pluginPath => {
+          ctx.loadPlugin(pluginPath)
+        })
+      })
+      .then(() => ctx)
+  }
+}
 
 /**
  * ```
  * // CommonJS
- * const {process} = require('hexo-test-utils/core')
+ * const {process} = require('hexo-test-utils')
  *
  * // ES2015
- * import {process} from 'hexo-test-utils/core'
+ * import {process} from 'hexo-test-utils'
  * ```
  *
  * Loads and processes all the blog data. After calling this function the passed {@link HexoContext} will have all information
@@ -63,10 +155,10 @@ export function process(ctx) {
 /**
  * ```
  * // CommonJS
- * const {mockConfig} = require('hexo-test-utils/core')
+ * const {mockConfig} = require('hexo-test-utils')
  *
  * // ES2015
- * import {mockConfig} from 'hexo-test-utils/core'
+ * import {mockConfig} from 'hexo-test-utils'
  * ```
  *
  * Mocks the Hexo configuration. Useful to test the plugin with different configurations without using fixtures.
@@ -92,7 +184,7 @@ export function mockConfig(ctx, name, value) {
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Sun Apr 15 2018 19:12:45 GMT+0200 (CEST) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Thu Apr 19 2018 21:46:47 GMT+0200 (CEST) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
 </footer>
 
 <script>prettyPrint();</script>
