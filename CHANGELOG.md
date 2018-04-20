@@ -2,6 +2,8 @@
 All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
+
+## [0.1.1] - 2018-04-20]
 ### Fixed
  - `contentFor` for buffers being strings and not found routes
 
