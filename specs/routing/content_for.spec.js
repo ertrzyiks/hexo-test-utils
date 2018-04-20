@@ -10,11 +10,18 @@ test('handles missing route', async t => {
   const error = await t.throws(contentFor(ctx, 'some-route'));
 
   t.is(error.message, 'Route "some-route" not found');
-});
+})
 
-test('loads the content', async t => {
+test('loads the text content', async t => {
   const ctx = await sandbox()
   ctx.route.set('some-route', 'Content here')
   const content = await contentFor(ctx, 'some-route')
-  t.is(content, 'Content here')
-});
+  t.is(content.toString(), 'Content here')
+})
+
+test('loads the binary content', async t => {
+  const ctx = await sandbox()
+  ctx.route.set('some-route', Buffer.from([100, 101, 102]))
+  const content = await contentFor(ctx, 'some-route')
+  t.is(content.toString('hex'), '646566')
+})
