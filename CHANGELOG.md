@@ -2,6 +2,8 @@
 All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
+
+## [0.1.3] - 2018-04-22
 ## Fixed
  - make sure `_config.yml` can be read
 
