@@ -2,9 +2,11 @@
 All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
+### Added
+ - `hasRoute` can be called with regular expression
 
 ## [0.1.3] - 2018-04-22
-## Fixed
+### Fixed
  - make sure `_config.yml` can be read
 
 ## [0.1.2] - 2018-04-20]
