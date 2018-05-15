@@ -22,3 +22,15 @@ test(async t => {
   ctx.route.remove('some-route')
   t.is(hasRoute(ctx, 'some-route'), false)
 });
+
+test(async t => {
+  const ctx = await sandbox()
+  ctx.route.set('some-route', 'Content here')
+  t.is(hasRoute(ctx, /some-ro.te/), true)
+});
+
+test(async t => {
+  const ctx = await sandbox()
+  ctx.route.set('some-route', 'Content here')
+  t.is(hasRoute(ctx, /some-ro.....te/), false)
+});
