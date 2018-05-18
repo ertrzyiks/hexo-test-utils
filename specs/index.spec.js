@@ -30,3 +30,14 @@ test('reads _config.yml', async t => {
   await process(ctx)
   t.is(ctx.config['some-property'], 'some-value')
 })
+
+test('renders fixture by name', async t => {
+  const sandbox = createSandbox(Hexo, {
+    fixture_folder: path.join(__dirname, 'support', 'fixtures')
+  })
+
+  const ctx = await sandbox({fixtureName: 'configurable'})
+
+  await process(ctx)
+  t.is(ctx.config['some-property'], 'some-value')
+})
