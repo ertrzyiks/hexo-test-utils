@@ -2,6 +2,8 @@
 All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
+
+## [0.2.1] - 2018-05-18
 ### Added
  - allow to pass object with `fixtureName` property to the init function
 

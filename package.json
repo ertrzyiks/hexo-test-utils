@@ -1,6 +1,6 @@
 {
   "name": "hexo-test-utils",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "A set of utils for easy testing Hexo plugins",
   "main": "index.js",
   "scripts": {
