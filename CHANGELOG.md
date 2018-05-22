@@ -2,10 +2,13 @@
 All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
+### Added
+ - add `skipInit` property to the sandbox factory function
+ - a separate `init` function
 
 ## [0.2.1] - 2018-05-18
 ### Added
- - allow to pass object with `fixtureName` property to the init function
+ - allow to pass object with `fixtureName` property to the sandbox factory function
 
 ## [0.2.0] - 2018-05-15
 ### Added

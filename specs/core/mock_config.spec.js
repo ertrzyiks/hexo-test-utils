@@ -11,4 +11,4 @@ test(async t => {
   mockConfig(ctx, 'my_field', 'my_value')
 
   t.is(ctx.config.my_field, 'my_value')
-});
+})
