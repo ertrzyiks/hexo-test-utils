@@ -2,6 +2,8 @@
 All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
+
+## [0.3.0]
 ### Added
  - add `skipInit` property to the sandbox factory function
  - a separate `init` function
