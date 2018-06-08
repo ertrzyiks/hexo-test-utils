@@ -2,6 +2,7 @@
 All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
+ - Fix return type of `sandboxFactoryFn`.
 
 ## [0.3.0]
 ### Added
