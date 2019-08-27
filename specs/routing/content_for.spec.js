@@ -7,7 +7,7 @@ const sandbox = createSandbox(Hexo)
 
 test('handles missing route', async t => {
   const ctx = await sandbox()
-  const error = await t.throws(contentFor(ctx, 'some-route'));
+  const error = await t.throwsAsync(() => contentFor(ctx, 'some-route'));
 
   t.is(error.message, 'Route "some-route" not found');
 })

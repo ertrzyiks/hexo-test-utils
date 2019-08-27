@@ -5,7 +5,7 @@ import {mockConfig} from '../../lib/core'
 
 const sandbox = createSandbox(Hexo)
 
-test(async t => {
+test('mock_config', async t => {
   const ctx = await sandbox()
 
   mockConfig(ctx, 'my_field', 'my_value')
