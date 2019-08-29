@@ -4,12 +4,12 @@ import Hexo from 'hexo'
 import {createSandbox} from '../../lib'
 import {process, init, mockConfig} from '../../lib/core'
 
-test(t => {
+test('sandbox is function', t => {
   const sandbox = createSandbox(Hexo)
   t.is(typeof sandbox, 'function')
 })
 
-test(async t => {
+test('sandbox smoke test', async t => {
   const sandbox = createSandbox(Hexo, {
     plugins: [path.join(__dirname, '..', 'support', 'plugins', 'test', 'index.js')]
   })

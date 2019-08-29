@@ -36,15 +36,15 @@
     "stream-to-promise": "^2.2.0"
   },
   "devDependencies": {
-    "@babel/cli": "^7.0.0-beta.44",
-    "@babel/core": "^7.0.0-beta.44",
-    "@babel/plugin-proposal-object-rest-spread": "^7.0.0-beta.44",
-    "@babel/preset-env": "^7.0.0-beta.44",
-    "@babel/register": "^7.0.0-beta.44",
-    "ava": "^0.25.0",
+    "@babel/cli": "^7.5.5",
+    "@babel/core": "^7.5.5",
+    "@babel/plugin-proposal-object-rest-spread": "^7.5.5",
+    "@babel/preset-env": "^7.5.5",
+    "@babel/register": "^7.5.5",
+    "ava": "^2.3.0",
     "docdash": "^0.4.0",
     "gh-pages": "^1.1.0",
-    "hexo": "^3.6.0",
+    "hexo": "^3.9.0",
     "hexo-renderer-markdown-it": "^3.4.1",
     "jsdoc": "^3.5.5"
   }
