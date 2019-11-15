@@ -2,6 +2,9 @@
 All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
+## [0.4.0]
+ - Add support for Hexo 4
+
 ## [0.3.1]
 ### Fixed
  - Fix return type of `sandboxFactoryFn`.
