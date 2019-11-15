@@ -23,7 +23,7 @@
     "url": "git+https://github.com/ertrzyiks/hexo-test-utils.git"
   },
   "peerDependencies": {
-    "hexo": "3.x"
+    "hexo": "3.x || 4.x"
   },
   "author": "",
   "license": "MIT",
