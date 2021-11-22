@@ -15,6 +15,7 @@ jobs:
     name: "Tests (Node ${{ matrix.node }}, Hexo ${{ matrix.hexo }})"
     runs-on: ubuntu-latest
     strategy:
+      fail-fast: false
       matrix:
         hexo: [ 3, 4, 5 ]
         node: [ 14, 16 ]
