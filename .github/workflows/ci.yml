@@ -16,7 +16,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        hexo: [ 3, 4 ]
+        hexo: [ 3, 4, 5 ]
         node: [ 14, 16 ]
 
     steps:
