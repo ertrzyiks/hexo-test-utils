@@ -17,7 +17,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        hexo: [ 3, 4, 5 ]
+        hexo: [ 3, 4, 5, 6 ]
         node: [ 14, 16 ]
 
     steps:
