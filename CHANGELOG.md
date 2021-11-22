@@ -2,6 +2,9 @@
 All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
+## [0.5.0]
+- Add support for Hexo 5
+
 ## [0.4.1]
  - Fix the released code
 
